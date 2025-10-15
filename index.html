@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpCode - Painel de Gestão</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" id="main-container">
+    <section id="login-view" class="active-view">
+        <div class="login-card">
+            <h1>Login HelpCode</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="Digite seu email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required placeholder="Digite sua senha">
+                </div>
+                <button type="submit" class="btn-submit">Entrar</button>
+                <p id="login-message" class="error"></p>
+                <p style="font-size: 12px; margin-top: 15px;">Use as credenciais de demonstração: <strong>admin@helpcode.com</strong> / <strong>senha123</strong></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="dashboard-view" class="hidden-view">
+        <nav class="nav-buttons">
+            <button id="nav-dashboard-btn" class="active">Dashboard</button>
+            <button id="nav-reports-btn">Relatórios</button>
+            <button id="nav-chat-btn">Chat</button>
+            <button id="nav-admin-btn">Admin</button>
+        </nav>
+        <header>
+            <div class="header-logo"><img src="https://i.ibb.co/C07pT0/logo-helpcode.png" alt="Logo HelpCode"></div>
+            <div class="user-info">
+                <button id="profile-btn" class="profile-btn"><img id="user-avatar-small" src="https://via.placeholder.com/40" alt="Avatar"><span id="user-name"></span></button>
+                <button id="logout-btn" class="logout-btn">Sair</button>
+            </div>
+            <h1>Painel de Solicitações</h1>
+            <p>Visão geral e gestão de pedidos de apoio.</p>
+            <div class="dashboard-stats">
+                <div class="stat-card"><p>Pendentes</p><span id="count-pending">0</span></div>
+                <div class="stat-card"><p>Em Andamento</p><span id="count-inprogress">0</span></div>
+                <div class="stat-card"><p>Resolvidas</p><span id="count-resolved">0</span></div>
+            </div>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter-type="status" data-filter-value="all">Todas</button>
+            <button class="filter-btn" data-filter-type="status" data-filter-value="Pendente">Pendentes</button>
+            <button class="filter-btn" data-filter-type="status" data-filter-value="Em andamento">Em Andamento</button>
+            <button class="filter-btn" data-filter-type="status" data-filter-value="Resolvido">Resolvidas</button>
+        </div>
+        <div class="filters">
+            <button class="filter-btn active" data-filter-type="priority" data-filter-value="all">Todas as Prioridades</button>
+            <button class="filter-btn" data-filter-type="priority" data-filter-value="Alta">Alta</button>
+            <button class="filter-btn" data-filter-type="priority" data-filter-value="Média">Média</button>
+            <button class="filter-btn" data-filter-type="priority" data-filter-value="Baixa">Baixa</button>
+        </div>
+
+        <div class="request-list" id="requestList"></div>
+    </section>
+
+    <section id="details-view" class="hidden-view">
+        <button id="back-to-dashboard" class="back-btn">&larr; Voltar</button>
+        <div class="details-card">
+            <div class="details-header"><h2 id="modalTitle"></h2><span id="modalId"></span></div>
+            <div class="modal-details">
+                <p><strong>Tipo de Apoio:</strong> <span id="modalTipoApoio"></span></p>
+                <p><strong>Data:</strong> <span id="modalData"></span></p>
+                <p><strong>Localização:</strong> <span id="modalLocalizacao"></span></p>
+                <p><strong>Telefone:</strong> <span id="modalTelefone"></span></p>
+                <p><strong>Motivo:</strong> <span id="modalMotivo"></span></p>
+                <p><strong>Deficiência:</strong> <span id="modalDeficiencia"></span></p>
+                <p><strong>Prioridade:</strong> <span id="modalPrioridade"></span></p>
+                <p><strong>Transcrição:</strong> <span id="modalTranscricao"></span></p>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-action-btn status-btn pending-btn" data-status="Pendente">Marcar como Pendente</button>
+                <button class="modal-action-btn status-btn inprogress-btn" data-status="Em andamento">Marcar como Em Andamento</button>
+                <button class="modal-action-btn status-btn resolved-btn" data-status="Resolvido">Marcar como Resolvido</button>
+                <button class="modal-action-btn delete-btn" id="delete-request-btn">Excluir Chamado</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="reports-view" class="hidden-view">
+        <button id="back-to-dashboard-from-reports" class="back-btn">&larr; Voltar</button>
+        <header><h2>Relatórios e Métricas de Desempenho</h2></header>
+        <div class="report-card">
+            <h3>Solicitações por Tipo de Apoio</h3>
+            <div id="chart-by-type" class="chart-container"></div>
+        </div>
+        <div class="report-card">
+            <h3>Tempo Médio de Resposta (minutos)</h3>
+            <div id="chart-response-time">
+                <p>Média de todas as solicitações: <strong id="avg-response-time">N/A</strong></p>
+            </div>
+        </div>
+        <div class="report-card">
+            <h3>Distribuição por Prioridade</h3>
+            <div id="chart-by-priority" class="chart-container"></div>
+        </div>
+    </section>
+
+    <section id="chat-view" class="hidden-view">
+        <button id="back-to-dashboard-from-chat" class="back-btn">&larr; Voltar</button>
+        <header><h2>Chat da Equipe</h2></header>
+        <div class="chat-window">
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-text" placeholder="Digite sua mensagem..."><button id="send-chat-btn" class="option-btn">Enviar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile-view" class="hidden-view">
+        <button id="back-to-dashboard-from-profile" class="back-btn">&larr; Voltar</button>
+        <div class="profile-card">
+            <h2>Perfil do Usuário</h2>
+            <div class="profile-avatar"><img id="user-avatar" src="https://via.placeholder.com/150" alt="Avatar"></div>
+            <form id="profile-form">
+                <div class="form-group"><label for="profile-name">Nome</label><input type="text" id="profile-name"></div>
+                <div class="form-group"><label for="profile-email">Email</label><input type="email" id="profile-email" disabled></div>
+                <div class="form-group"><label for="profile-avatar-url">URL da Foto de Perfil</label><input type="text" id="profile-avatar-url" placeholder="Ex: https://via.placeholder.com/150"></div>
+                <button type="submit" class="btn-submit">Salvar Alterações</button>
+                <p id="profile-message" class="success"></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="admin-view" class="hidden-view">
+        <button id="back-to-dashboard-from-admin" class="back-btn">&larr; Voltar</button>
+        <div class="admin-card">
+            <h2>Gerenciamento de Equipe</h2>
+            <div class="user-list" id="user-list"></div>
+            <h3>Adicionar Novo Usuário</h3>
+            <form id="add-user-form">
+                <div class="form-group"><label for="new-user-name">Nome</label><input type="text" id="new-user-name" required></div>
+                <div class="form-group"><label for="new-user-email">Email</label><input type="email" id="new-user-email" required></div>
+                <div class="form-group"><label for="new-user-password">Senha</label><input type="password" id="new-user-password" required></div>
+                <button type="submit" class="btn-submit">Adicionar Usuário</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
