@@ -2,7 +2,7 @@
 // PAINEL DE GERENCIAMENTO (APLICAÇÃO)
 // ⚠️ SUBSTITUA A URL DA API OBTIDA DO GOOGLE APPS SCRIPT AQUI ⚠️
 // =======================================================
-const API_URL = "https://script.google.com/macros/s/AKfycbyee7EW36K6Q-MoQT4rHQLxb8RUImec-7O_wNO_KA755uenMhdkMpO_RDYgCkv1xkM/exec"; 
+const API_URL = "https://script.google.com/macros/library/d/17kTwjobIB1JfHkwe8lW8zX6jpr6f6A9-uVch28SFxP-o9DCHgAs8hF9w/1"; 
 // ------------------------------------------------
 
 // --- Configurações de Mock ---
