@@ -1,0 +1,182 @@
+/* ======================================================= */
+/* Estilos do Painel de Gerenciamento */
+/* ======================================================= */
+:root {
+    --primary-color: #004d99;
+    --secondary-color: #f0f2f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.hidden-view { display: none; }
+.active-view { display: block; }
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-submit:hover { background-color: #1558b3; }
+.error { color: #dc3545; text-align: center; }
+.success { color: #28a745; text-align: center; }
+.back-btn { padding: 10px 15px; border: none; border-radius: 8px; background-color: #666; color: #fff; cursor: pointer; margin-bottom: 20px; }
+.back-btn:hover { background-color: #555; }
+/* Estilos da Tela de Login */
+#login-view.active-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--secondary-color);
+}
+.login-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.login-card h1 {
+    text-align: center;
+    color: #1a73e8;
+    margin-bottom: 30px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Estilos do Dashboard */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.header-logo img {
+    max-width: 200px;
+}
+.user-info {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-btn {
+    display: flex; align-items: center; gap: 10px;
+    background: none; border: none; cursor: pointer;
+    font-weight: bold;
+}
+#user-avatar-small { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.logout-btn { padding: 8px 12px; background-color: var(--danger-color); color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+.dashboard-stats { display: flex; justify-content: space-around; gap: 20px; margin-bottom: 30px; }
+.stat-card { background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); text-align: center; flex: 1; }
+.stat-card p { margin: 0; font-size: 16px; color: #555; }
+.stat-card span { font-size: 36px; font-weight: bold; color: #1a73e8; }
+.filters { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+.filter-btn { padding: 10px 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9; cursor: pointer; }
+.filter-btn.active { background-color: #1a73e8; color: #fff; border-color: #1a73e8; }
+.request-list { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.request-card { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); border-left: 5px solid; cursor: pointer; }
+.request-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+.request-card.prioridade-Alta { border-left-color: #dc3545; }
+.request-card.prioridade-Média { border-left-color: #ffc107; }
+.request-card.prioridade-Baixa { border-left-color: #28a745; }
+.request-card.status-Pendente { border-left-style: double; }
+.request-card h3 { margin: 0 0 10px 0; font-size: 18px; }
+.request-card p { margin: 5px 0; font-size: 14px; color: #555; }
+.status-badge { display: inline-block; padding: 4px 8px; border-radius: 5px; font-size: 12px; font-weight: bold; color: #fff; text-transform: uppercase; }
+.status-badge.Pendente { background-color: #1a73e8; }
+.status-badge.Em-andamento { background-color: #ffc107; }
+.status-badge.Resolvido { background-color: #28a745; }
+.prioridade-badge { display: inline-block; padding: 4px 8px; border-radius: 5px; font-size: 12px; font-weight: bold; color: #fff; text-transform: uppercase; }
+.prioridade-badge.Alta { background-color: #dc3545; }
+.prioridade-badge.Média { background-color: #ffc107; }
+.prioridade-badge.Baixa { background-color: #28a745; }
+/* Estilos da Tela de Detalhes */
+.back-btn { padding: 10px 15px; border: none; border-radius: 8px; background-color: #666; color: #fff; cursor: pointer; margin-bottom: 20px; }
+.back-btn:hover { background-color: #555; }
+.details-card { background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }
+.details-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #f0f2f5; padding-bottom: 10px; }
+.modal-details strong { color: #1a73e8; }
+.modal-actions { margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.modal-actions .status-btn { padding: 10px 15px; border: none; border-radius: 5px; color: #fff; cursor: pointer; font-weight: bold; }
+.modal-actions .pending-btn { background-color: #1a73e8; }
+.modal-actions .inprogress-btn { background-color: #ffc107; }
+.modal-actions .resolved-btn { background-color: #28a745; }
+.modal-actions .delete-btn { background-color: #dc3545; color: #fff;}
+/* Estilos da Tela de Relatórios */
+#reports-view { padding-top: 20px; }
+.report-card { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); margin-bottom: 20px; }
+.report-card h3 { color: #1a73e8; }
+.chart-container { height: 250px; display: flex; align-items: flex-end; gap: 10px; padding-top: 10px; }
+.chart-bar { background-color: #1a73e8; width: 50px; transition: height 0.5s; text-align: center; color: white; font-weight: bold; font-size: 12px; }
+.chart-bar span { display: block; margin-top: -20px; }
+/* Estilos da Tela de Perfil */
+#profile-view { padding-top: 20px; }
+.profile-card { max-width: 500px; margin: 0 auto; padding: 40px; }
+.profile-card h2 { color: #1a73e8; text-align: center; }
+.profile-avatar { text-align: center; margin-bottom: 20px; }
+.profile-avatar img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #ccc; }
+/* Estilos da Tela de Chat */
+#chat-view { padding-top: 20px; }
+.chat-window { height: 500px; background-color: #f9f9f9; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
+.chat-messages { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 10px; }
+.chat-message { max-width: 70%; padding: 10px; border-radius: 15px; position: relative; }
+.chat-message.me { background-color: #1a73e8; color: white; align-self: flex-end; }
+.chat-message.other { background-color: #e0e0e0; align-self: flex-start; }
+.chat-input { display: flex; gap: 10px; margin-top: 20px; }
+.chat-input input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
+/* Estilos do Painel de Admin */
+#admin-view { padding-top: 20px; }
+.admin-card { max-width: 700px; margin: 0 auto; padding: 40px; }
+.admin-card h2 { color: #1a73e8; text-align: center; }
+.user-list { margin-bottom: 30px; }
+.user-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc; }
+.user-item button { background-color: var(--danger-color); color: #fff; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+#add-user-form { margin-top: 20px; }
