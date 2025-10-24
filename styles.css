@@ -1,0 +1,217 @@
+/* Estilos do Site de Pedidos */
+:root {
+    --primary-color: #004d99;
+    --secondary-color: #f0f2f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 550px;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.header-logo {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin: 0;
+}
+
+p.subtitle {
+    font-size: 16px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 77, 153, 0.2);
+}
+
+.radio-options, .checkbox-options {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-options label, .checkbox-options label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--success-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-submit:hover {
+    background-color: #218838;
+}
+.btn-submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.option-btn:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+}
+
+.location-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+.location-controls button {
+    padding: 12px;
+    background-color: #f0f2f5;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.location-controls button:hover {
+    background-color: #e0e0e0;
+}
+
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: flex-start;
+}
+.audio-controls-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.audio-controls button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    flex-grow: 1;
+}
+#recordButton { background-color: var(--danger-color); color: white; border: none; }
+#stopButton { background-color: var(--warning-color); color: #333; border: none;}
+#deleteButton { background-color: transparent; color: var(--danger-color); border-color: var(--danger-color); }
+.audio-player-container { margin-top: 10px; }
+
+#confirmationMessage {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+}
+.success { background-color: #e6f7ee; color: var(--success-color); }
+.error { background-color: #fcebeb; color: var(--danger-color); }
+.helpcode-logo-small {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    max-width: 80px;
+    opacity: 0.6;
+}
+.back-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #666;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.back-btn:hover { background-color: #555; }
